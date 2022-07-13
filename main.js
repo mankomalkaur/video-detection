@@ -1,6 +1,6 @@
 video = "";
 status = "";
-objects =[]
+objects =[];
 
 function preload() {
     video = createVideo('video.mp4');
@@ -10,7 +10,15 @@ function preload() {
 function setup() {
     canvas = createCanvas(480, 380);
     canvas.center();
+    
 }
+
+function start() {
+    objectdetector = ml5.objectDetector('cocossd', modelloaded);
+    document.getElementById("status").innerHTML = "status detecting object";
+
+}
+
 
 function draw() {
     image(video, 0, 0, 480, 380);
@@ -42,11 +50,6 @@ if (error) {
 }
 }
 
-function start() {
-    objectdetector = ml5.objectDetector('cocossd', modelloaded);
-    document.getElementById("status").innerHTML = "status detecting object";
-
-}
 
 function modelloaded() {
     console.log('modelloded');
